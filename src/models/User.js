@@ -46,6 +46,14 @@ schema.methods.generateJWT = function generateJWT() {
     );
 };
 
+schema.methods.generateResetPasswordToken = function generateResetPasswordToken() {
+    return jwt.sign({
+            _id: this._id
+        },
+        process.env.JWT_SECRET, { expiresIn: '1h' }
+    );
+};
+
 
 
 schema.methods.toAuthJSON = function toAuthJSON() {
